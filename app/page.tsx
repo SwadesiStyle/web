@@ -3,7 +3,7 @@ import { ThreeItemGrid } from 'components/grid/three-items';
 import Footer from 'components/layout/footer';
 
 export const metadata = {
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  description: 'Swadesi is a community of creators, artists and conscious consumers united by shared ideas of sustainability, simplicity and thoughtful fashion',
   openGraph: {
     type: 'website'
   }
@@ -12,7 +12,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      <ThreeItemGrid />
+      <ThreeItemGrid collection='nature' />
       <Carousel />
       <Footer />
     </>
