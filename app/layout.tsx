@@ -40,7 +40,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang="en">
-      <body className="bg-neutral-50 text-black selection:bg-teal-300">
+      <body className="bg-neutral-50 text-black selection:bg-teal-300 font-sans">
         <CartProvider cartPromise={cart}>
           <Navbar />
           <main>
