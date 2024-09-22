@@ -46,6 +46,8 @@ function SubmitButton({
   return (
     <button
       aria-label="Add to cart"
+      disabled={!selectedVariantId}
+      // className={clsx(buttonClasses, disabledClasses)}
       className={clsx(buttonClasses, {
         'hover:opacity-90': true
       })}
@@ -53,7 +55,7 @@ function SubmitButton({
       <div className="absolute left-0 ml-4">
         <PlusIcon className="h-5" />
       </div>
-      Add To Cart
+      Pre Order
     </button>
   );
 }
