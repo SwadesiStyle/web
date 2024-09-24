@@ -3,7 +3,7 @@ import clsx from 'clsx';
 export default function LogoIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
-      className={clsx('h-4 w-4', props.className)}
+      className={clsx('h-12', props.className)}
       version="1.1"
       aria-label={`${process.env.SITE_NAME} logo`}
       {...props}
@@ -24,7 +24,7 @@ export default function LogoIcon(props: React.ComponentProps<'svg'>) {
           transform="scale(0.1)">
           <path
             d="M 12520,0 H 0 V 9917.26 H 12520 V 0"
-            style={{fill:'#ffffff','fill-opacity':1,'fill-rule':'nonzero',stroke:'none'}}
+            style={{fill:'transparent','fill-opacity':1,'fill-rule':'nonzero',stroke:'none'}}
             id="path12" />
           <path
             d="m 2896.68,3440.94 c 1032.55,678.97 2056.69,856.14 2066.95,857.85 l 535.72,89.62 -541.11,47.17 C 3769.79,4539.23 3016.1,5498.9 2934.11,5691.78 2986.42,5550.12 3362.92,4650.32 4595.39,4353.78 3347,3981.67 2896.68,3440.94 2896.68,3440.94"
