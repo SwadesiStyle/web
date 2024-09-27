@@ -3,7 +3,7 @@ import clsx from 'clsx';
 export default function LogoIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
-      className={clsx('h-12', props.className)}
+      className={clsx('h-12 w-12', props.className)}
       version="1.1"
       aria-label={`${process.env.SITE_NAME} logo`}
       {...props}

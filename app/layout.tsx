@@ -1,17 +1,11 @@
-import { CartProvider } from 'components/cart/cart-context';
-import { Navbar } from 'components/layout/navbar';
-// import { GeistSans } from 'geist/font/sans';
-import { getCart } from 'lib/shopify';
-import { cookies } from 'next/headers';
+import { NavMenu } from 'components/layout/navbar';
 import { ReactNode } from 'react';
 import './globals.css';
 
-const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
+const { SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : 'http://localhost:3000';
-// const twitterCreator = TWITTER_CREATOR ? ensureStartsWith(TWITTER_CREATOR, '@') : undefined;
-// const twitterSite = TWITTER_SITE ? ensureStartsWith(TWITTER_SITE, 'https://') : undefined;
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -23,32 +17,24 @@ export const metadata = {
     follow: true,
     index: true
   },
-  // ...(twitterCreator &&
-  //   twitterSite && {
-  //     twitter: {
-  //       card: 'summary_large_image',
-  //       creator: twitterCreator,
-  //       site: twitterSite
-  //     }
-  //   })
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const cartId = cookies().get('cartId')?.value;
+  // const cartId = cookies().get('cartId')?.value;
   // Don't await the fetch, pass the Promise to the context provider
-  const cart = getCart(cartId);
+  // const cart = getCart(cartId);
 
   return (
-    <html lang="en">
-      <body className="bg-neutral-50 text-black selection:bg-teal-300 font-sans">
-        <CartProvider cartPromise={cart}>
-          <Navbar />
+    <html lang="en" data-theme="light">
+      <body className="font-sans">
+        {/* <CartProvider cartPromise={cart}> */}
+          <NavMenu />
           <main>
             {children}
             {/* <Toaster closeButton /> */}
             {/* <WelcomeToast /> */}
           </main>
-        </CartProvider>
+        {/* </CartProvider> */}
       </body>
     </html>
   );
