@@ -1,1 +1,1 @@
-An sustainable fashion store built on top of open network like ONDC. You could use this any ecommerce store really. The only fashion domain customisation this contains is that it can be used as a peer to peer thrift store.
+An sustainable fashion store built on top of open network like ONDC (specifically this uses beckn protocol) You could use this to create any ONDC ecommerce store really. The only fashion domain customisation this contains is that it can be used as a peer to peer thrift store.
