@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs-app
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+    spec:
+      containers:
+      - name: nextjs-app
+        image: nextjs-app:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          value: "postgres://postgres:password@postgres-db:5432/mydb"
+        volumeMounts:
+        - name: nextjs-code
+          mountPath: /app
+        command: ["npm", "run", "dev"]
+      volumes:
+      - name: nextjs-code
+        hostPath:
+          path: /path/to/your/nextjs/code # Update this path with your Next.js code location
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextjs-service
+spec:
+  selector:
+    app: nextjs-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: LoadBalancer # Exposes the service outside the cluster, using a LoadBalancer
