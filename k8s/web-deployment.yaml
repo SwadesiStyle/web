@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextjs-app
+  name: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nextjs-app
+      app: web
   template:
     metadata:
       labels:
-        app: nextjs-app
+        app: web
     spec:
       containers:
-      - name: nextjs-app
-        image: nextjs-app:latest
+      - name: web
+        image: web:latest
         ports:
         - containerPort: 3000
         env:
@@ -24,10 +24,10 @@ spec:
         - name: nextjs-code
           mountPath: /app
         command: ["npm", "run", "dev"]
-      volumes:
-      - name: nextjs-code
-        hostPath:
-          path: /path/to/your/nextjs/code # Update this path with your Next.js code location
+      # volumes:
+      # - name: nextjs-code
+      #   hostPath:
+      #     path: /path/to/your/nextjs/code # Update this path with your Next.js code location
 
 ---
 apiVersion: v1
@@ -36,7 +36,7 @@ metadata:
   name: nextjs-service
 spec:
   selector:
-    app: nextjs-app
+    app: web
   ports:
     - protocol: TCP
       port: 3000
