@@ -1,12 +1,13 @@
 on:
-  pull_request:
-    branches:
-      - main
+  # pull_request:
+    # branches:
+      # - main
+  workflow_dispatch:
 
 jobs:
 
   build:
-    name: Checks build
+    name: Build image
     runs-on: ubuntu-latest
     steps:
 
