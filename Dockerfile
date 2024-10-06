@@ -13,11 +13,11 @@ ENV NODE_ENV=production
 # Install dependencies
 RUN npm i -g pnpm && pnpm install
 
-# Build app
-RUN pnpm run build
-
 # Copy the rest of the application code to the container
 COPY . .
+
+# Build app
+RUN pnpm run build
 
 # Expose port 3000 to the outside world
 EXPOSE 3000
