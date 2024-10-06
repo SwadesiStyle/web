@@ -1,16 +1,23 @@
 on:
-  push:
+  pull-requst:
     branches:
       - main
 
 jobs:
+
   build:
-    name: Deploys web on main merge
+    name: Checks build
     runs-on: ubuntu-latest
     steps:
 
     - name: Checkout main
       uses: actions/checkout@v2
+
+    # - name: Update SHA
+    #   run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/site/_meta
+
+    - name: Build container image
+      run: docker build -t registry.digitalocean.com/swadesi/web:$(echo $GITHUB_SHA | head -c7) .
 
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
@@ -19,6 +26,9 @@ jobs:
 
     - name: Log in to DigitalOcean Container Registry with short-lived credentials
       run: doctl registry login --expiry-seconds 600
+
+    - name: Push image to DigitalOcean Container Registry
+      run: docker push registry.digitalocean.com/swapkats/web:$(echo $GITHUB_SHA | head -c7)
 
     - name: Update deployment file
       run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yml
