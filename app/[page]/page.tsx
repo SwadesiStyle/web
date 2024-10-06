@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 
 // import { getPage } from 'lib/shopify';
-import { notFound } from 'next/navigation';
 
 export async function generateMetadata({
   params
@@ -26,7 +25,7 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: { page: string } }) {
   // const page = await getPage(params.page);
 
-  if (!page) return notFound();
+  // if (!page) return notFound();
 
   return (
     <>
