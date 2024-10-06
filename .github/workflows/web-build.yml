@@ -1,5 +1,5 @@
 on:
-  pull-requst:
+  pull-request:
     branches:
       - main
 
@@ -28,7 +28,7 @@ jobs:
       run: doctl registry login --expiry-seconds 600
 
     - name: Push image to DigitalOcean Container Registry
-      run: docker push registry.digitalocean.com/swapkats/web:$(echo $GITHUB_SHA | head -c7)
+      run: docker push registry.digitalocean.com/swadesi/web:$(echo $GITHUB_SHA | head -c7)
 
     - name: Update deployment file
       run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yml
