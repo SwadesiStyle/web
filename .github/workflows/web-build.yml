@@ -7,7 +7,6 @@ on:
     types: [created]
 
 jobs:
-
   build:
     if: startsWith(github.event.comment.body, '/run-build')
     name: Build image
