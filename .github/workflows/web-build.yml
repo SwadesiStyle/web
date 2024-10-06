@@ -1,0 +1,37 @@
+on:
+  # pull_request:
+    # branches:
+      # - main
+  workflow_dispatch:
+  issue_comment:
+    types: [created]
+
+jobs:
+  build:
+    if: startsWith(github.event.comment.body, '/run-build')
+    name: Build image
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout main
+      uses: actions/checkout@v2
+
+    # - name: Update SHA
+    #   run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/site/_meta
+
+    - name: Build container image
+      run: docker build -t registry.digitalocean.com/swadesi/web:$(echo $GITHUB_SHA | head -c7) .
+
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      run: doctl registry login --expiry-seconds 600
+
+    - name: Push image to DigitalOcean Container Registry
+      run: docker push registry.digitalocean.com/swadesi/web:$(echo $GITHUB_SHA | head -c7)
+
+    - name: Update deployment file
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yml
