@@ -3,12 +3,15 @@ on:
     # branches:
       # - main
   workflow_dispatch:
+  issue_comment:
+    types: [created]
 
 jobs:
 
   build:
     name: Build image
     runs-on: ubuntu-latest
+    if: startsWith(github.event.comment.body, '/run-build')
     steps:
 
     - name: Checkout main
