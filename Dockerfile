@@ -5,7 +5,10 @@ FROM node:18-alpine
 WORKDIR /
 
 # Copy package.json and package-lock.json to the container
-COPY package*.json ./
+COPY package.json pnpm-lock.yaml ./
+
+# Set environment variables
+ENV NODE_ENV=production
 
 # Install dependencies
 RUN npm i -g pnpm && pnpm install
@@ -18,9 +21,6 @@ COPY . .
 
 # Expose port 3000 to the outside world
 EXPOSE 3000
-
-# Set environment variables
-ENV NODE_ENV=development
 
 # Command to run the Next.js app
 CMD ["pnpm", "run", "start"]
