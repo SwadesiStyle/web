@@ -2,7 +2,7 @@
 FROM node:18-alpine
 
 # Set the working directory inside the container
-WORKDIR /
+WORKDIR /usr/app
 
 # Copy package.json and package-lock.json to the container
 COPY package.json pnpm-lock.yaml ./
@@ -14,7 +14,9 @@ ENV NODE_ENV=production
 RUN npm i -g pnpm && pnpm install
 
 # Copy the rest of the application code to the container
-COPY . .
+COPY lib ./
+COPY app ./
+COPY components ./
 
 # Build app
 RUN pnpm run build
