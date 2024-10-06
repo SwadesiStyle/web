@@ -32,12 +32,3 @@ jobs:
 
     - name: Update deployment file
       run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yml
-
-    - name: Save DigitalOcean kubeconfig with short-lived credentials
-      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 swadesi
-
-    - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f k8s/web-deployment.yml
-
-    - name: Verify deployment
-      run: kubectl rollout status deployment/web-deployment
