@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": ">=20",
+    "node": ">=18.2.0",
     "pnpm": ">=9"
   },
   "scripts": {
