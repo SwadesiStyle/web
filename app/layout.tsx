@@ -1,4 +1,3 @@
-import { NavMenu } from 'components/layout/navbar';
 import { ReactNode } from 'react';
 import './globals.css';
 
@@ -28,7 +27,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html lang="en" data-theme="light">
       <body className="font-sans">
         {/* <CartProvider cartPromise={cart}> */}
-          <NavMenu />
+          {/* <NavMenu /> */}
           <main>
             {children}
             {/* <Toaster closeButton /> */}
