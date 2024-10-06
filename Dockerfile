@@ -8,7 +8,10 @@ WORKDIR /
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm i -g pnpm && pnpm install
+
+# Build app
+RUN pnpm build
 
 # Copy the rest of the application code to the container
 COPY . .
@@ -20,4 +23,4 @@ EXPOSE 3000
 ENV NODE_ENV=development
 
 # Command to run the Next.js app
-CMD ["npm", "run", "dev"]
+CMD ["pnpm", "run", "start"]
