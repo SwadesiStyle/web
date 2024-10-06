@@ -6,7 +6,6 @@ Below is a list of the versions of the project currently supported with security
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.1.x   | :x:                |
 | 1.0.x   | :white_check_mark: |
 | < 1.0   | :x:                |
 
