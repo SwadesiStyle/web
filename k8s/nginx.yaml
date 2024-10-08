@@ -2,9 +2,23 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  labels:
+    app: nginx   # Label to match the service selector
 spec:
   containers:
   - name: nginx
     image: nginx
     ports:
     - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx   # Matches the Pod label
+  ports:
+  - protocol: TCP
+    port: 3000        # Port exposed on the host
+    targetPort: 80

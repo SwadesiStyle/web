@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: web-deployment
 spec:
   replicas: 1
   selector:
@@ -13,27 +13,29 @@ spec:
         app: web
     spec:
       containers:
-      - name: web
-        image: web:latest
+      - name: web-container
+        image: swapkats/swadesi:6d1be24
         ports:
         - containerPort: 3000
-        env:
-        - name: DATABASE_URL
-          value: "postgres://postgres:password@postgres-db:5432/mydb"
-        volumeMounts:
-        - name: nextjs-code
-          mountPath: /usr/app
-        command: ["npm", "run", "start"]
-      volumes:
-      - name: nextjs-code
-        hostPath:
-          path: /usr/app
+        command: ["pnpm", "run", "start"]
+
+      #   # env:
+      #   # - name: DATABASE_URL
+      #   #   value: "postgres://postgres:password@postgres-db:5432/mydb"
+      #   volumeMounts:
+      #   - name: web
+      #     mountPath: /usr/app
+      #   command: ["pnpm", "run", "start"]
+      # volumes:
+      # - name: web
+      #   hostPath:
+      #     path: /usr/app
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nextjs-service
+  name: web-service
 spec:
   selector:
     app: web
