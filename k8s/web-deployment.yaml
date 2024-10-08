@@ -22,12 +22,12 @@ spec:
           value: "postgres://postgres:password@postgres-db:5432/mydb"
         volumeMounts:
         - name: nextjs-code
-          mountPath: /app
-        command: ["npm", "run", "dev"]
-      # volumes:
-      # - name: nextjs-code
-      #   hostPath:
-      #     path: /path/to/your/nextjs/code # Update this path with your Next.js code location
+          mountPath: /usr/app
+        command: ["npm", "run", "start"]
+      volumes:
+      - name: nextjs-code
+        hostPath:
+          path: /usr/app
 
 ---
 apiVersion: v1
