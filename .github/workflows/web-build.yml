@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    if: ${{ github.event.comment.body && startsWith(github.event.comment.body, '/run-build') }}
+    # if: ${{ github.event.comment.body && startsWith(github.event.comment.body, '/run-build') }}
     name: Build image
     runs-on: ubuntu-latest
     steps:
