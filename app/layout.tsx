@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from 'react';
 import './globals.css';
 
@@ -6,17 +8,17 @@ const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : 'http://localhost:3000';
 
-export const metadata = {
-  metadataBase: new URL(baseUrl),
-  title: {
-    default: SITE_NAME!,
-    template: `%s | ${SITE_NAME}`
-  },
-  robots: {
-    follow: true,
-    index: true
-  },
-};
+// export const metadata = {
+//   metadataBase: new URL(baseUrl),
+//   title: {
+//     default: SITE_NAME!,
+//     template: `%s | ${SITE_NAME}`
+//   },
+//   robots: {
+//     follow: true,
+//     index: true
+//   },
+// };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   // const cartId = cookies().get('cartId')?.value;
@@ -24,7 +26,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   // const cart = getCart(cartId);
 
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       <body className="font-sans">
         {/* <CartProvider cartPromise={cart}> */}
           {/* <NavMenu /> */}

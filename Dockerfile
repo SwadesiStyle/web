@@ -15,9 +15,9 @@ RUN npm i -g pnpm && pnpm install
 
 # Copy the rest of the application code to the container
 COPY package.json next.config.js postcss.config.js prettier.config.js tailwind.config.js tsconfig.json ./
-COPY lib ./lib
+# COPY lib ./lib
 COPY app ./app
-COPY components ./components
+# COPY components ./components
 
 # Build app
 RUN pnpm run build
