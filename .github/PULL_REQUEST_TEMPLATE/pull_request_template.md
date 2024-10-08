@@ -5,9 +5,12 @@ Thank you for your contribution! Please ensure that the following items are addr
 ## Checklist
 
 - [ ] Code compiles and runs locally without issues.
+- [ ] Add reference issues adressed in the pull request.
+- [ ] Mention changes implemented
 - [ ] Tests have been written and pass locally (if applicable).
 - [ ] Documentation has been updated as needed.
 - [ ] Check if docker build is passing (read instruction below) 
+- [ ] Request for a review from @swapkats
 
 ## Description
 
