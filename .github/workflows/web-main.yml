@@ -17,14 +17,14 @@ jobs:
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
-    - name: Log in to DigitalOcean Container Registry with short-lived credentials
-      run: doctl registry login --expiry-seconds 600
+    # - name: Log in to DigitalOcean Container Registry with short-lived credentials
+    #   run: doctl registry login --expiry-seconds 600
 
     # - name: Save DigitalOcean kubeconfig with short-lived credentials
     #   run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 swadesi
 
     - name: Update deployment file
-      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yaml
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|docker.io/swapkats/swadesi:'${TAG}'|' k8s/web-deployment.yaml
 
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl apply -f k8s/web-deployment.yaml

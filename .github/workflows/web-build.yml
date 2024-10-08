@@ -17,22 +17,25 @@ jobs:
     - name: Checkout main
       uses: actions/checkout@v2
 
-    # - name: Update SHA
-    #   run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/site/_meta
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
 
     - name: Build container image
-      run: docker build -t registry.digitalocean.com/swadesi/web:$(echo $GITHUB_SHA | head -c7) .
+      run: docker build -t docker.io/swapkats/swadesi:$(echo $GITHUB_SHA | head -c7) .
 
-    - name: Install doctl
-      uses: digitalocean/action-doctl@v2
-      with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    # - name: Install doctl
+    #   uses: digitalocean/action-doctl@v2
+    #   with:
+    #     token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
-    - name: Log in to DigitalOcean Container Registry with short-lived credentials
-      run: doctl registry login --expiry-seconds 600
+    # - name: Log in to DigitalOcean Container Registry with short-lived credentials
+    #   run: doctl registry login --expiry-seconds 600
 
     - name: Push image to DigitalOcean Container Registry
-      run: docker push registry.digitalocean.com/swadesi/web:$(echo $GITHUB_SHA | head -c7)
+      run: docker push docker.io/swapkats/swadesi:$(echo $GITHUB_SHA | head -c7)
 
     # - name: Update deployment file
     #   run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yaml
