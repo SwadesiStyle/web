@@ -21,19 +21,19 @@
     "react-daisyui": "^5.0.5",
     "react-dom": "18.2.0",
     "sonner": "^1.5.0",
-    "styled-components": "6"
-  },
-  "devDependencies": {
+    "tailwindcss": "^3.4.6",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.13",
-    "@types/node": "20.14.12",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
+    "styled-components": "6",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
     "prettier": "3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.6",
+    "prettier-plugin-tailwindcss": "^0.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.12",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
     "typescript": "5.5.4"
   }
 }
