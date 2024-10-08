@@ -34,5 +34,5 @@ jobs:
     - name: Push image to DigitalOcean Container Registry
       run: docker push registry.digitalocean.com/swadesi/web:$(echo $GITHUB_SHA | head -c7)
 
-    - name: Update deployment file
-      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yml
+    # - name: Update deployment file
+    #   run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/swadesi/web:'${TAG}'|' k8s/web-deployment.yaml
