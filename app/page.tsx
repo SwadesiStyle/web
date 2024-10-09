@@ -1,5 +1,10 @@
 "use client";
-// import { Carousel } from 'components/carousel';
+
+import { ReactNode } from "react";
+
+import Carousel from 'src/components/HomepageCarousel';
+import Navbar from "src/components/Navbar";
+
 // import { ThreeItemGrid } from 'components/grid/three-items';
 // import Footer from 'components/layout/footer';
 
@@ -10,10 +15,12 @@
 //   }
 // };
 
-export default function HomePage() {
+export default function HomePage({ children }: { children: ReactNode }) {
   return (
     <>
-      <h1>Hello World</h1>
+      <Navbar />
+      <Carousel />
+      {children}
       {/* <ThreeItemGrid collection='nature' />
       <Carousel /> */}
       {/* <Footer /> */}
