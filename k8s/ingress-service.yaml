@@ -2,7 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-swadesi
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # service.beta.kubernetes.io/do-loadbalancer-name: "swadesi.style.loadbalancer"
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
+    service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: "true"
 spec:
+  tls:
+  - hosts:
+      - swadesi.style
+    secretName: swadesi-tls
   ingressClassName: nginx
   rules:
     - host: swadesi.style
