@@ -1,1 +1,3 @@
 An sustainable fashion store built on top of open network like ONDC (specifically this uses beckn protocol). You could repurpose this to create any ONDC ecommerce store
+
+Fast fashion is responsible for 8% global emissions not counting the water pollution. Being extremely inefficient, swadesi aims to enable the transition to a more sustainable slow fashion. If you like what we're doing and contribute feel free pick up any open issue to give a shout at our [discord server](https://discord.gg/cvyUcgZQ)
