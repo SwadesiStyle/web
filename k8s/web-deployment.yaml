@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web-container
-        image: swapkats/swadesi:6d1be24
+        image: swapkats/swadesi:dddd8ba
         ports:
         - containerPort: 3000
         command: ["pnpm", "run", "start"]
@@ -43,4 +43,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-  type: LoadBalancer # Exposes the service outside the cluster, using a LoadBalancer
+  type: NodePort
