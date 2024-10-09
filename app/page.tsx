@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 
 import Carousel from 'src/components/HomepageCarousel';
+import Navbar from "src/components/Navbar";
 
 // import { ThreeItemGrid } from 'components/grid/three-items';
 // import Footer from 'components/layout/footer';
@@ -17,6 +18,7 @@ import Carousel from 'src/components/HomepageCarousel';
 export default function HomePage({ children }: { children: ReactNode }) {
   return (
     <>
+      <Navbar />
       <Carousel />
       {children}
       {/* <ThreeItemGrid collection='nature' />
